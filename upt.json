@@ -1,0 +1,11 @@
+{
+  "name": "hw2/modules/js/src/library/event",
+  "devDependencies": {
+    "%tests": "hw2-core/js-library-event#tests",
+    "%doc": "hw2-core/js-library-event#doc"
+  },
+  "keep": [
+    ".git/config"
+  ],
+  "license": "http://www.hyperweb2.com/terms"
+}
