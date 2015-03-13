@@ -1,57 +1,57 @@
-/*
- * Copyright (C) 2007 - 2014 Hyperweb2 All rights reserved.
- * GNU General Public License version 3; see www.hyperweb2.com/terms/
- */
 hw2.define([
     'hw2!PATH_JS_LIB:event/include.js',
     "hw2!PATH_JS_LIB:common/Array.js"
 ], function () {
     var $ = this;
-    $.EventHandler = $.Class({members: [
+    return $.EventHandler = $.Class({members: [
+            /**
+             * Vars
+             */
             {
-                attributes: ["private", "static"],
-                name: "instances",
-                val: new Array()
+                a: ["private", "static"], n: "instances", v: new Array()
             },
             {
-                attributes: "public",
-                name: "__construct",
-                val: function () {
-                    this.triggers = [];
+                a: "private", n: "triggers", v: new Array()
+            },
+            /**
+             * Methods
+             */
+            {
+                a: "public", n: "__construct", v: function (triggers) {
+                    this._i.triggers = triggers || [];
                 }
             },
             {
-                attributes: "public",
-                name: "bind",
-                val: function (obj) {
+                a: "public", n: "setTriggers", v: function (triggers) {
+                    this._i.triggers=triggers;
+                }
+            },
+            {
+                a: "public", n: "bind", v: function (obj) {
                     this.triggers.push(obj);
                 }
             },
             {
-                attributes: "public",
-                name: "unbind",
-                val: function (obj) {
+                a: "public", n: "unbind", v: function (obj) {
                     $.Array.remove(this.triggers, obj);
                 }
             },
             {
-                attributes: "public",
-                name: "trigger",
-                val: function (func, data) {
-                    for (index = 0; index < this.triggers.length; ++index) {
+                a: "public", n: "trigger", v: function (func, data) {
+                    var res=[];
+                    for (var index = 0; index < this.triggers.length; ++index) {
                         var f = this.triggers[index][func];
                         if (typeof f === 'function')
-                            var bFunc = f.apply(null, this.triggers[index], data);
-                        bFunc(); // launch bounded function
+                            res.push(f.apply(this.triggers[index], data));
                     }
+                    
+                    return res;
                 }
             },
             {
-                attributes: ["public", "static"],
-                name: "I",
-                val: function (key) {
+                a: ["public", "static"], n: "I", v: function (key, triggers) {
                     if (typeof this._s.instances[key] === "undefined") {
-                        this._s.instances[key] = new $.Event();
+                        this._s.instances[key] = new $.Event(triggers);
                     }
 
                     return this._s.instances[key];
