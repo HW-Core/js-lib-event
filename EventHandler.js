@@ -1,6 +1,6 @@
 hw2.define([
-    'hw2!PATH_JS_LIB:event/include.js',
-    "hw2!PATH_JS_LIB:common/Array.js"
+    'hw2!{PATH_JS_LIB}event/include.js',
+    "hw2!{PATH_JS_LIB}common/Array.js"
 ], function () {
     var $ = this;
     return $.EventHandler = $.Class({members: [
@@ -23,29 +23,30 @@ hw2.define([
             },
             {
                 a: "public", n: "setTriggers", v: function (triggers) {
-                    this._i.triggers=triggers;
+                    this._i.triggers = triggers;
                 }
             },
             {
                 a: "public", n: "bind", v: function (obj) {
-                    this.triggers.push(obj);
+                    if (!this._i.triggers.indexOf(obj))
+                        this._i.triggers.push(obj);
                 }
             },
             {
                 a: "public", n: "unbind", v: function (obj) {
-                    $.Array.remove(this.triggers, obj);
+                    $.Array.remove(this._i.triggers, obj);
                 }
             },
             {
-                a: "public", n: "trigger", v: function (func, data) {
-                    var res=[];
-                    for (var index = 0; index < this.triggers.length; ++index) {
-                        var f = this.triggers[index][func];
+                a: "public", n: "trigger", v: function (func /*, arguments */) {
+                    var res = [];
+                    for (var index = 0; index < this._i.triggers.length; ++index) {
+                        var f = this._i.triggers[index][func];
                         if (typeof f === 'function')
-                            res.push(f.apply(this.triggers[index], data));
+                            res.push(f.apply(this._i.triggers[index], Array.prototype.slice.call(arguments, 1)));
                     }
-                    
-                    return res;
+
+                    return $.Async.all(res);
                 }
             },
             {
