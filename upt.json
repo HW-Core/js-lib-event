@@ -7,7 +7,7 @@
     },
     "devDependencies": {
         "%tests": "hw2-core/js-library-event#tests",
-        "%doc": "hw2-core/js-library-event#doc"
+        "%doc": "hw2-core/js-library-event#gh-pages"
     },
     "_comment_keep": "ensure we keep the right git repository configurations",
     "keep": [
