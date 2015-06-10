@@ -1,13 +1,13 @@
 {
-    "name": "hw2/modules/js/src/library/event",
+    "name": "hwcore/modulesjs/src/library/event",
     "license": "http://www.hyperweb2.com/terms",
     "dependencies": {
-        "%common": "hw2-core/js-library-common#*",
-        "%class": "hw2-core/js-library-class#*"
+        "%common": "hw-core/js-library-common#*",
+        "%class": "hw-core/js-library-class#*"
     },
     "devDependencies": {
-        "%tests": "hw2-core/js-library-event#tests",
-        "%doc": "hw2-core/js-library-event#gh-pages"
+        "%tests": "hw-core/js-library-event#tests",
+        "%doc": "hw-core/js-library-event#gh-pages"
     },
     "_comment_keep": "ensure we keep the right git repository configurations",
     "keep": [

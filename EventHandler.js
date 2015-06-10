@@ -1,6 +1,6 @@
-hw2.define([
-    'hw2!{PATH_JS_LIB}event/include.js',
-    "hw2!{PATH_JS_LIB}common/Array.js"
+hwc.define([
+    'hwc!{PATH_JS_LIB}event/include.js',
+    "hwc!{PATH_JS_LIB}common/Array.js"
 ], function () {
     var $ = this;
     return $.EventHandler = $.Class({members: [
