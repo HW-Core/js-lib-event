@@ -1,8 +1,8 @@
 {
-    "name": "hw2/modules/js/src/library/event/tests",
+    "name": "hwcore/modulesjs/src/library/event/tests",
     "license": "http://www.hyperweb2.com/terms",
     "dependencies": {
-        "%parent-lib": "hw2-core/js-library-event"
+        "%parent-lib": "hw-core/js-library-event"
     },
     "_comment_keep": "ensure we keep the right git repository configurations",
     "keep": [
